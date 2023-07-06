@@ -6,7 +6,7 @@ on:
       - labeled
       - synchronize
     branches:
-      - master
+      - main
 
 jobs:
   approve:

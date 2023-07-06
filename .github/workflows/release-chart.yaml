@@ -3,7 +3,7 @@ name: Release Chart
 on:
   push:
     branches:
-      - master
+      - main
     paths:
       - "charts/external-dns/Chart.yaml"
 
