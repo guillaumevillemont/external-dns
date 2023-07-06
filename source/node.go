@@ -78,6 +78,7 @@ func NewNodeSource(ctx context.Context, kubeClient kubernetes.Interface, annotat
 	}, nil
 }
 
+
 // Endpoints returns endpoint objects for each service that should be processed.
 func (ns *nodeSource) Endpoints(ctx context.Context) ([]*endpoint.Endpoint, error) {
 	nodes, err := ns.nodeInformer.Lister().List(ns.labelSelector)
