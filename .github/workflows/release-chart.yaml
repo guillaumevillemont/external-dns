@@ -30,20 +30,6 @@ jobs:
           chart_version="$(grep -Po "(?<=^version: ).+" charts/external-dns/Chart.yaml)"
           echo "version=${chart_version}" >> $GITHUB_OUTPUT
 
-      - name: Get changelog entry
-        id: changelog_reader
-        uses: mindsers/changelog-reader-action@b97ce03a10d9bdbb07beb491c76a5a01d78cd3ef
-        with:
-          path: charts/external-dns/CHANGELOG.md
-          version: "v${{ steps.chart_version.outputs.version }}"
-
-      - name: Create release notes
-        run: |
-          set -euo pipefail
-          cat <<"EOF" > charts/external-dns/RELEASE.md
-          ${{ steps.changelog_reader.outputs.changes }}
-          EOF
-
       - name: Configure Git
         run: |
           git config user.name "$GITHUB_ACTOR"
